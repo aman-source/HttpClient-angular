@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="header">
+        <h1>Welcome to the Pokedex</h1>
+        <div class="center-content">
+            <input type="text" id="searchInput" placeholder="Search Pokemon" [(ngModel)]="searchTerm" />
+            <button (click)="onSearch()">Search</button>
+        </div>
+    </div>
+
+    <div class="poke-card">
+        <img [src]="pokemonData.sprites.front_default" class="poke-image" />
+        <div class="poke-info">
+            <div class="poke-info-item">
+                <p class="info-label"><strong>Name:</strong>   {{ pokemonData.name | uppercase }}</p>
+            </div>
+            <div class="poke-info-item">
+                <p class="info-label"><strong>ID:</strong>   {{ pokemonData.id }}</p>
+            </div>
+            <div class="poke-info-item">
+                <p class="info-label"><strong>Abilities</strong></p>
+                <ul class="info-list">
+                    <li *ngFor="let ability of pokemonData.abilities">
+                        <strong>{{ ability.ability.name }}</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="poke-info-item">
+                <ul class="info-list">
+                    <li><strong>HP:</strong> {{ pokemonData.stats[0].base_stat }}</li>
+                    <li><strong>Attack:</strong> {{ pokemonData.stats[1].base_stat }}</li>
+                    <li><strong>Defense:</strong> {{ pokemonData.stats[2].base_stat }}</li>
+                    <li><strong>Special Attack:</strong> {{ pokemonData.stats[3].base_stat }}</li>
+                    <li><strong>Special Defense:</strong> {{ pokemonData.stats[4].base_stat }}</li>
+                    <li><strong>Speed:</strong> {{ pokemonData.stats[5].base_stat }}</li>
+                </ul>
+            </div>
+            <div class="poke-info-item">
+                <p class="info-label"><strong>Type:  <ul class="info-list">
+                    <li *ngFor="let type of pokemonData.types">
+                        <strong>{{ type.type.name }}</strong>
+                    </li>
+                </ul></strong></p>
+                
+            </div>
+        </div>
+    </div>
+</div>
